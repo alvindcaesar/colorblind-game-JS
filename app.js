@@ -10,7 +10,7 @@ let greenButton = document.getElementById('green-btn');
 let timer = 10;
 let timer_display = document.querySelector('.timer');
 let score = document.getElementById('score-id');
-let countdown = 0;
+let scorecount = 0;
 let game = false;
 
 playButton.addEventListener('click', triggerTimer);
@@ -29,6 +29,7 @@ function triggerTimer() {
             timer_display.innerHTML = timer
         } else {
             clearInterval(runTimer)
+            game = false
         };
     }, 1000);
 }
@@ -42,13 +43,15 @@ function scorePoint(e) {
 
     if (game == true) {
         if (button.value === dynamicWord.style.color) {
-            countdown++;
+            scorecount++;
         } else {
-            countdown = 0;
+            scorecount = 0;
         }
        dynamicWord.style.color = color[getRandomElement()];
        dynamicWord.innerHTML = text[getRandomElement()];
-       score.innerHTML = countdown
+       score.innerHTML = scorecount
+    } else {
+        // do nothing
     }
 }
 
